@@ -1,5 +1,5 @@
 from flask import Flask
-from exts import db
+from exts import db,mail
 from models import UserModel
 from blueprints.auth import bp as auth_bp
 from blueprints.qa import bp as qa_bp
@@ -10,6 +10,7 @@ app = Flask(__name__)
 app.config.from_object(config)
 
 db.init_app(app)
+mail.init_app(app)
 
 migrate = Migrate(app, db)
 
