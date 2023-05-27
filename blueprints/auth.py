@@ -25,6 +25,7 @@ def get_email_captcha():
     source = string.digits * 4
     captcha = random.sample(source, 4)
     captcha = ''.join(captcha)
+    # 应该用celery来发送
     message = Message(subject='ZhiliaoOA验证码', recipients=[email], body=f'您的验证码是{captcha}')
     mail.send(message)
 
