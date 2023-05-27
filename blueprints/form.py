@@ -22,7 +22,7 @@ class RegisterForm(wtforms.Form):
         captcha = field.data
         email = self.email.data
         captcha_model = EmailCaptchaModel.query.filter_by(email=email, captcha=captcha).first()
-        print(email,captcha,captcha_model,'msg')
+        print(email, captcha, captcha_model, 'msg')
         if not captcha_model:
             raise wtforms.ValidationError(message='邮箱或者验证码错误')
         else:
