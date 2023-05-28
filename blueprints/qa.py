@@ -3,7 +3,7 @@ from flask import Blueprint, request, render_template, redirect, url_for, g
 from exts import db
 from models import QuestionModel
 from .form import QuestionForm
-
+from decorators import login_required
 bp = Blueprint('qa', __name__, url_prefix='/')
 
 
@@ -13,6 +13,7 @@ def index():
 
 
 @bp.route('qa/public', methods=['GET', "POST"])
+@login_required
 def public_question():
     if request.method == 'GET':
         return render_template('public_question.html')
