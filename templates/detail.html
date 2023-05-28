@@ -16,9 +16,10 @@
             <p class="question-content">{{ question.content }}</p>
             <hr>
             <h4 class="comment-group-title">评论（2）：</h4>
-            <form action="#" method="post">
+            <form action="{{ url_for('qa.public_answer')}}" method="post">
                 <div class="form-group">
                     <input type="text" placeholder="请填写评论" name="content" class="form-control">
+                    <input type="hidden" name="question_id" value="{{ question.id }}">
                 </div>
                 <div class="form-group" style="text-align: right;">
                     <button class="btn btn-primary">评论</button>
