@@ -52,3 +52,10 @@ def public_answer():
     else:
         print(form.errors)
         return redirect(url_for("qa.qa_detail", qa_id=request.form.get('question_id')))
+
+
+@bp.route('search')
+def search():
+    q = request.args.get('q')
+    questions = QuestionModel.query.filter(QuestionModel.title.contains(q)).all()
+    return render_template('index.html', questions=questions)
